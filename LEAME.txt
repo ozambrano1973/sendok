@@ -1,0 +1,110 @@
+Hola!
+
+Te contaré aspectos necesarios para que puedas trabajar en esta aplicación, o bien, entenderla si es que no tienes 
+mucha experiencia con Laravel, si es que ya tienes el dominio necesario, no te preocupes.
+
+Este desarrollo MVC está creado con LARAVEL versión 7.x, por lo que la estructura del backend está toda en PHP 7.
+
+Debes estar atent@ a los cambios que php haga en sus funciones si se desea cambiar de versión. 
+Favor revisar la documentación del sitio oficial: https://www.php.net/docs.php
+
+A nivel de base de datos se cuenta con MySQL como motor principal, el modelo relacional se encuentra documentado
+en la carpeta de Flujos y diagramas de DATAPRO (pedir a Sasha).
+Las tablas poseen sus constraint de relaciones, por lo que tu mism@ podrás generar los diagramas a través de herramientas
+como MYSQL WorkBench. Si deseas mejorar el modelo, puedes hacerlo, pero lo ideal es que cuando crees las tablas
+estas queden referenciadas con constraint en el caso de que se utilicen claves foráneas.
+
+* Se debe tener instalado npm y php artisan en el equipo donde se vaya a desarrollar.
+
+Para el desarrollo se utilizó Visual Studio Code, y para crear Modelos y Controladores, la Terminal
+que provee el editor, a través de los siguientes comandos puedes crear automáticamente la estructura de 
+un controlador nuevo o modelo (los Modelos contienen las interacciones a BD , los Controladores interactúan con el Javascript,
+y este último a su vez con las Vistas hechas con plantillas Blade):
+
+>> php artisan make:controller NOMBREDECONTROLADOR
+>> php artisan make:model NOMBREDEMODELO
+
+Es muy importante que una vez que crees el modelo , le asignes la variable "protected $table = 'NOMBREDETABLA';"
+y además le importes la clase DB -> "use DB". Si necesitas saber como, mira los modelos que ya existen.
+
+Todas las rutas POST Y GET se definen en la carpeta app/routes/web.php
+
+Los controladores están divididos por vistas, es decir para cada vista que se vaya a cargar hay un Controlador
+que "carga" una view, a esa view se le pueden pasar parámetros, y es así como se generan dinámicamente las
+diferentes tablas que se utilizan en el sistema.
+
+Si por X motivo, necesitas debuggear lo que llega a un controlador, puedes importar el Facade de Log,
+en la sección de usos del controlador (zona superior), declarar lo siguiente:
+
+use Illuminate\Support\Facades\Log;
+
+Y luego en la funcion que desees debuggear, podrás hacer log de la siguiente forma:
+Log::debug(VARIABLE O TEXTO QUE QUIERAS PROBAR);
+
+La salida , o el log en sí, quedará en la carpeta: app\storage\logs\laravel.log
+(preocupate de que una vez que esté listo , borrar esos debugs, para no saturar el archivo log del servidor)
+
+Los datos que posteriormente se listan en las tablas, se cargan a través de una consulta al modelo de base de datos.
+Hay funciones de obtencion de datos que retornan , un array. Y hay otras que retornan un JSON.
+Lo ideal es que todas retornen JSON para más adelante, así se mejora el rendimiento de la página web, no es lo mismo
+cargar un array de 1000 espacios, que un json, el json en si , tiene menos peso como variable.
+
+----------------------------------------------------
+En resumen con ejemplo: Si deseas hacer un listado de productos en una DataTable, debes primero, crear una vista
+con el nombre que tu quieras pero con formato .blade.php (idealmente que sea solo minúsculas y guiones bajo por convencion)
+Entonces copias y pegas la estructura de una de las vistas y le quitas el contenido.
+
+Considera que el navbar se encuentra en otro archivo (Esto es para no esribir el mismo codigo N veces), así que 
+una vez creada tu view, deberás crear un controlador que cargue esa view (a través de consola con php artisan 
+make:controller NOMBRE DE CONTROLADOR), deberás cargar la vista en dicho controlador, de está forma incluir en el interior
+de la clase del controlador nuevo una funcion index():
+
+  public function index()
+    {
+        return view('NOMBRE_DE_TU_VIEW')
+    }
+
+Y supongamos que quieres añadirle el listado de productos, entonces a esa funcion index deberás agregarle un "with":
+pero antes de eso se debe crear el modelo de producto (para consultar a la base de datos), en consola con el comando :
+>> php artisan make:model ProductoModel (es un nombre de referencia tu puedes ponerle como quieras)
+
+Deberas dirigirte al nuevo modelo que creaste "ProductoModel" y en la sección de usos, declarar:
+use DB; 
+
+Además se tendrá que definir la variable protegida con el nombre de la tabla dentro de la clase del modelo:
+
+protected $table = "productos"; // suponiendo que la tabla que creaste en base de datos se llama productos
+
+y luego en el modelo puedes definir los diferentes metodos de consulta y modificacion a la base de datos
+
+public function index()
+    {
+        return view('NOMBRE_DE_TU_VIEW')
+        ->with("productos", ProductoModel::all()) //laravel tiene una funcion por defecto que se llama "all" 
+        //que retorna todos los resultados de una tabla
+        // pero en el caso de que sea otra funcion que tu quieras crear, solo hay que reemplazar el "all()" por
+        // "NOMBRE_DE_TU_METODO()"
+    }
+
+===
+para la documentacion se utilizo apidoc  en su versión 3.*
+composer require mpociot/laravel-apidoc-generator
+
+https://beyondco.de/docs/laravel-apidoc-generator/getting-started/installation
+
+Para la primera vez: 
+php artisan vendor:publish --provider="Mpociot\ApiDoc\ApiDocGeneratorServiceProvider" --tag=apidoc-config
+
+Y cada vez que se desee compilar la doc:
+php artisan apidoc:generate
+
+
+Despues de cambiar los smtp es necesario poner en consola:
+php artisan config:cache
+
+
+
+
+
+
+

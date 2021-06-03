@@ -1,0 +1,47 @@
+# -----------------------------------------------------
+# ---Copiar y pegar aqui sus nuevas configuraciones----
+# -----------------------------------------------------
+DB_CONNECTION=bXlzcWw=
+DB_HOST=MTI3LjAuMC4x
+DB_PORT=MzMwNg==
+DB_DATABASE=c2VuZG9r
+DB_USERNAME=b3NjYXI=
+DB_PASSWORD=b3NjYXI=
+
+
+
+#DB_CONNECTION=bXlzcWw=
+#DB_HOST=bG9jYWxob3N0
+#DB_PORT=MzMwNg==
+#DB_DATABASE=c2VuZG9r
+#DB_USERNAME=b3NjYXI=
+#DB_PASSWORD=b3NjYXI=
+MAIL_MAILER=c210cA==
+MAIL_HOST=c210cC5vZmZpY2UzNjUuY29t
+MAIL_PORT=NTg3
+MAIL_USERNAME=c2VuZG9rQGRhdGFwcm8uY2w=
+MAIL_PASSWORD=RDR0NHBybzIwMjAh
+MAIL_ENCRYPTION=dGxz
+MAIL_FROM_ADDRESS=c2VuZG9rQGRhdGFwcm8uY2w=
+MAIL_FROM_NAME=U2VuZG9r
+
+
+
+# -----------------------------------------------------
+# --------------Otras configuraciones------------------
+# -----------------------------------------------------
+
+APP_NAME=Sendok
+APP_ENV=local
+APP_KEY=base64:NcGyioOgzJpjU/GyycIUAmfsSoT9gdbl2T5hhxJc0aI=
+APP_DEBUG=true
+APP_URL=http://localhost
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=array
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+AWS_DEFAULT_REGION=us-east-1
+PUSHER_APP_CLUSTER=mt1
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"

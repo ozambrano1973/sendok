@@ -1,0 +1,23 @@
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    }
+    .table td{
+    white-space: normal;
+    }
+    .div2{}
+    @media screen and (max-width: 1080px) {
+    .div2{width: 100%; border: none 0px RED;
+    overflow-x: scroll; overflow-y:hidden;}
+    table td {        
+    word-wrap: none;
+    width: 50px;
+    }
+    table th {        
+    word-wrap: none;
+    width: 50px;
+    }
+    }
+    .control-label{
+    margin-top: 10px;
+    }

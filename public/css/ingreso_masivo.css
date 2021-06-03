@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 500px;
+ }
+ .table td{
+    white-space: normal;
+ }
+
+ table th {        
+    word-wrap: none;
+    width: 50px;
+ }
+ 

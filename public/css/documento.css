@@ -1,0 +1,78 @@
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0px;
+    font-size: 0.75rem;
+    line-height: 14px;
+    font-weight: 300;
+    padding-left: 17px;
+    }
+    .top-spaced{
+    margin-top: 10px;
+    }
+    .margined-left{
+    margin-left: 12px;
+    }
+    .modal {
+    overflow-y:auto;
+    }
+    
+    table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    }
+
+    
+    @media screen and (max-width: 1080px) {
+       .div2{
+          width: 100%; border: none 0px RED;
+       overflow-x: scroll; overflow-y:hidden;
+       }
+       table td {        
+       word-wrap: none;
+       width: 50px;
+       height: 70px;
+       }
+       table th {        
+       word-wrap: none;
+       width: 50px;
+       }
+    }
+    .control-label{
+       margin-top: 10px;
+    }
+
+    .vista_previa_plantilla{         
+       border: 1px solid #dee2e6;
+       margin-top: 15px;
+       width: 96%;
+       margin-left: 2%;
+       margin-right: 2%;
+       background: #dee2e6;
+    }
+ 
+    .modal-ku {
+       width: 750px;
+       margin: auto;
+    }
+
+    .resumido {
+       overflow: hidden;
+       text-overflow: ellipsis;
+       white-space: nowrap;
+       width: 50%;
+       margin: auto;
+    }
+
+ .resumido:hover {
+    text-overflow: initial;
+    white-space: initial;
+    overflow: visible;
+    cursor: pointer;
+ }
+
+ .tablaFixed td{
+    word-wrap: none;
+    width: 50px;
+    white-space: normal;
+ }
